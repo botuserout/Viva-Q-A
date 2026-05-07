@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📱 aajbacchaleprabhu(MAD)</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Antic+Gravitas&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #4c1d95, #9333ea, #d8b4fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Antic Gravitas', serif;
+        }
+
+        .app-container {
+            display: flex;
+            width: 96vw;
+            height: 94vh;
+            background: #f5f3ff;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: #ffffff;
+            padding: 24px 20px;
+            box-sizing: border-box;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .search-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 10px 14px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 24px;
+            font-family: inherit;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: #8b5cf6;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .nav-item {
+            padding: 12px 8px;
+            font-size: 0.95rem;
+            color: #4b5563;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+            margin-bottom: 4px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #6d28d9;
+            font-weight: 500;
+            background: #f5f3ff;
+        }
+
+        .nav-arrow {
+            font-size: 10px;
+            color: #9ca3af;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 30px 40px;
+            overflow-y: auto;
+            background: linear-gradient(180deg, #ede9fe 0%, rgba(237, 233, 254, 0.3) 100%);
+            position: relative;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .hero h1 {
+            margin: 0 0 12px 0;
+            font-size: 2.5rem;
+            color: #1e1b4b;
+        }
+
+        .hero p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 1.1rem;
+        }
+
+        /* Columns */
+        .columns-wrapper {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .columns-wrapper::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .columns-wrapper::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 4px;
+        }
+
+        .columns-wrapper::-webkit-scrollbar-thumb {
+            background: rgba(139, 92, 246, 0.2);
+            border-radius: 4px;
+        }
+
+        .columns-wrapper::-webkit-scrollbar-thumb:hover {
+            background: rgba(139, 92, 246, 0.4);
+        }
+
+        .unit-column {
+            flex: 0 0 340px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .unit-column-title {
+            font-size: 1.25rem;
+            color: #1e1b4b;
+            margin: 0 0 4px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .topic-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b7280;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        /* QA Cards */
+        .qa-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            transition: box-shadow 0.2s, transform 0.2s;
+            backdrop-filter: blur(4px);
+        }
+
+        .qa-card:hover {
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .qa-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #1e1b4b;
+            cursor: pointer;
+            line-height: 1.4;
+            gap: 10px;
+        }
+
+        .qa-card-header-text {
+            flex: 1;
+        }
+
+        .qa-card-header .chevron {
+            font-size: 12px;
+            color: #8b5cf6;
+            transition: transform 0.2s;
+            margin-top: 4px;
+        }
+
+        .qa-card.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        .qa-card-content {
+            margin-top: 16px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .qa-card.open .qa-card-content {
+            display: block;
+        }
+
+        .qa-inner {
+            padding-left: 12px;
+            border-left: 3px solid #8b5cf6;
+        }
+
+        .qa-question {
+            font-weight: 600;
+            color: #4c1d95;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .qa-answer {
+            color: #374151;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .copy-btn {
+            display: block;
+            margin-left: auto;
+            background: transparent;
+            border: 1px solid #c4b5fd;
+            color: #6d28d9;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #8b5cf6;
+            color: #ffffff;
+            border-color: #8b5cf6;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            body {
+                background: #f5f3ff;
+            }
+
+            .app-container {
+                flex-direction: column;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 16px;
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                flex-shrink: 0;
+            }
+
+            .search-box {
+                margin-bottom: 16px;
+            }
+
+            #nav-items {
+                display: flex;
+                overflow-x: auto;
+                gap: 8px;
+                padding-bottom: 4px;
+            }
+
+            #nav-items::-webkit-scrollbar {
+                height: 4px;
+            }
+
+            #nav-items::-webkit-scrollbar-thumb {
+                background: rgba(139, 92, 246, 0.3);
+                border-radius: 4px;
+            }
+
+            .nav-item {
+                flex: 0 0 auto;
+                margin-bottom: 0;
+                white-space: nowrap;
+            }
+
+            .nav-arrow {
+                display: none;
+            }
+
+            .main-content {
+                padding: 16px;
+                overflow-x: hidden;
+            }
+
+            .hero {
+                padding: 24px 16px;
+                margin-bottom: 24px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .columns-wrapper {
+                flex-direction: column;
+            }
+
+            .unit-column {
+                flex: 1 1 auto;
+                width: 100%;
+                margin-bottom: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <input type="text" id="search-box" class="search-box" placeholder="🔍 Search docs...">
+
+            <div id="nav-items">
+                <div class="nav-item active" data-target="all">
+                    <span>Getting Started</span>
+                </div>
+                <!-- Dynamic Nav Items -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="hero">
+                <h1>aajbacchaleprabhu(MAD)</h1>
+                <p>All the best fellas!!</p>
+            </div>
+
+            <div class="columns-wrapper" id="columns-wrapper">
+                <!-- Dynamic Columns -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const qaData = [
+            {
+                "unitId": "unit-1",
+                "unitTitle": "Unit 1 – Android Basics & Activity",
+                "icon": "📱",
+                "description": "Core Android concepts, lifecycles, and basic layouts.",
+                "topics": [
+                    {
+                        "topicTitle": "Basic Concepts",
+                        "questions": [
+                            {
+                                "q": "What is Android and how does it work?",
+                                "a": "Android is a mobile operating system developed by Google, based on the Linux kernel. It works <br>by providing a platform where apps can run on smartphones and tablets. When you open an app, <br>Android loads it into memory, manages resources like battery and RAM, and shows it on the <br>screen. It handles everything from touchscreen input to Wi-Fi connections."
+                            },
+                            {
+                                "q": "What is an Android application?",
+                                "a": "An Android application is a software program that runs on Android devices. It is built using Java <br>or Kotlin along with XML for UI design. Apps are made of components like Activities (screens), <br>Services (background tasks), and more. Examples: WhatsApp, Instagram, Gmail."
+                            },
+                            {
+                                "q": "What is APK and what does it contain?",
+                                "a": "APK stands for Android Package Kit. It is the file format used to distribute and install apps on <br>Android, just like .exe on Windows. An APK contains compiled code (classes.dex), resources like <br>images and layouts, AndroidManifest.xml (app configuration), and libraries."
+                            },
+                            {
+                                "q": "What happens internally when you run an Android app?",
+                                "a": "When you tap an app icon, Android launches a process, creates the Application object, then <br>creates the first Activity (screen). The OS loads resources, inflates the XML layout into Views, and <br>displays the UI. The app then waits for user interaction. Each step triggers lifecycle methods like <br>onCreate(), onStart(), onResume()."
+                            },
+                            {
+                                "q": "What is Gradle and why is it used?",
+                                "a": "Gradle is a build automation tool used in Android development. It compiles your Java/Kotlin <br>code, merges resources, and packages everything into an APK. It also manages dependencies <br>(external libraries). Think of it as the engine that builds your project every time you press 'Run' in <br>Android Studio."
+                            },
+                            {
+                                "q": "What is the role of Android Studio?",
+                                "a": "Android Studio is the official Integrated Development Environment (IDE) for Android app <br>development. It provides a code editor, layout designer, emulator, debugger, and Gradle <br>integration. It makes it easy to write, test, and run Android apps all in one place.<br><br>   Activity & Lifecycle"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Activity & Lifecycle",
+                        "questions": [
+                            {
+                                "q": "What is an Activity in Android?",
+                                "a": "An Activity is a single screen with a user interface. Every screen in an Android app is an Activity. <br>For example, in WhatsApp: the chat list is one Activity, and opening a chat opens another Activity."
+                            },
+                            {
+                                "q": "Why is an Activity called a “single screen”?",
+                                "a": "Because each Activity represents exactly one UI screen. Just like a page in a book, each Activity <br>shows specific content and handles specific actions. Switching between screens means switching <br>between Activities."
+                            },
+                            {
+                                "q": "What are the different lifecycle methods of an Activity?",
+                                "a": "The lifecycle methods are: onCreate() – called when activity is first created; onStart() – activity <br>becomes visible; onResume() – activity starts interacting with user; onPause() – another activity <br>comes in front; onStop() – activity is no longer visible; onRestart() – called when activity comes <br>back from stopped state; onDestroy() – activity is destroyed/closed."
+                            },
+                            {
+                                "q": "What is the purpose of onCreate()?",
+                                "a": "onCreate() is the very first method called when an Activity is created. This is where you set up <br>the UI using setContentView(), initialize variables, and do setup work. It runs only once during the <br>Activity's life."
+                            },
+                            {
+                                "q": "Difference between onStart() and onResume()?",
+                                "a": "onStart() means the activity is becoming visible to the user but not yet interactive. onResume() <br>means the activity is fully in the foreground and the user can interact with it. Think of onStart() as <br>'you can see the screen' and onResume() as 'you can now use the screen'."
+                            },
+                            {
+                                "q": "When is onPause() called?",
+                                "a": "onPause() is called when the activity is partially hidden – like when a dialog box appears on top, <br>or the user is navigating to another app. It's a signal to save any important data quickly because the <br>activity may stop soon."
+                            },
+                            {
+                                "q": "What happens in onStop()?",
+                                "a": "onStop() is called when the activity is completely not visible to the user – like when you press the <br>Home button or open another app. The activity still exists in memory but is not shown. You should <br>release heavy resources here."
+                            },
+                            {
+                                "q": "What is the use of onDestroy()?",
+                                "a": "onDestroy() is the last lifecycle method, called just before the activity is completely removed from <br>memory. It's used to release all resources, stop threads, and clean up everything to prevent <br>memory leaks."
+                            },
+                            {
+                                "q": "What is onRestart()?",
+                                "a": "onRestart() is called when an activity that was stopped is being started again – like when you <br>press Back from another activity to return. It is followed by onStart() and onResume().<br><br>   Practical / Conceptual"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Practical / Conceptual",
+                        "questions": [
+                            {
+                                "q": "What happens if you press the back button in an activity?",
+                                "a": "When you press the Back button, onPause() → onStop() → onDestroy() are called in sequence, <br>and the activity is removed from the screen and from memory. You return to the previous activity in <br>the back stack."
+                            },
+                            {
+                                "q": "What lifecycle method is called when you switch apps?",
+                                "a": "When you switch to another app, onPause() is called first, then onStop(). The activity is still in <br>memory but not visible. When you come back, onRestart() → onStart() → onResume() are called."
+                            },
+                            {
+                                "q": "How does Android handle activity transitions?",
+                                "a": "Android uses a Back Stack to manage activities. When you open a new activity, it's pushed onto <br>the stack. When you press Back, the top activity is popped off and destroyed, revealing the <br>previous one. Android manages this automatically."
+                            },
+                            {
+                                "q": "Can an activity exist without UI? Explain.",
+                                "a": "Technically yes – you can have an activity with no visible UI by using a transparent theme. But <br>typically Activities are meant to have UI. If you need background work without UI, you should use a <br>Service instead.<br><br>   Layout & UI"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Layout & UI",
+                        "questions": [
+                            {
+                                "q": "What is a layout in Android?",
+                                "a": "A layout defines how UI elements (buttons, text, images) are arranged on the screen. Layouts <br>are written in XML files stored in the res/layout/ folder. The layout file is linked to an Activity using <br>setContentView()."
+                            },
+                            {
+                                "q": "Why are layouts written in XML?",
+                                "a": "XML is used because it keeps UI design separate from business logic (Java code). It's readable, <br>easy to edit, and Android Studio has a visual designer for XML layouts. This separation makes code <br>cleaner and easier to maintain."
+                            },
+                            {
+                                "q": "What is the difference between View and ViewGroup?",
+                                "a": "A View is a basic UI element like a Button, TextView, or ImageView – something the user sees <br>or interacts with. A ViewGroup is a container that holds multiple Views (and other ViewGroups). <br>Examples of ViewGroups: LinearLayout, RelativeLayout, ConstraintLayout."
+                            },
+                            {
+                                "q": "What is the purpose of activity_main.xml?",
+                                "a": "activity_main.xml is the default layout file for the main (first) screen of your app. It defines all UI <br>elements displayed when the app opens. It is loaded in MainActivity using <br>setContentView(R.layout.activity_main)."
+                            },
+                            {
+                                "q": "Difference between layout file and Java file?",
+                                "a": "The layout file (XML) defines WHAT the UI looks like – buttons, text, colors, positions. The Java <br>file defines HOW the app behaves – what happens when you click a button, how data is processed. <br>XML = design, Java = logic."
+                            },
+                            {
+                                "q": "What is a ScrollView and when is it used?",
+                                "a": "ScrollView is a ViewGroup that allows its content to be scrolled vertically. It's used when your <br>content is too long to fit on one screen. Example: a long form or a terms & conditions page. Note: <br>ScrollView can only have one direct child.<br><br>   RecyclerView / ListView"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "RecyclerView / ListView",
+                        "questions": [
+                            {
+                                "q": "What is RecyclerView?",
+                                "a": "RecyclerView is an advanced UI component used to display a large list of items efficiently. It <br>recycles (reuses) the views that scroll off screen, so it doesn't create new views for every item. This <br>makes it fast and memory-efficient."
+                            },
+                            {
+                                "q": "How is RecyclerView better than ListView?",
+                                "a": "RecyclerView forces you to use ViewHolder pattern (more efficient), supports both vertical and <br>horizontal scrolling, allows animations easily, and is more flexible with layout managers. ListView is <br>simpler but less powerful and less efficient."
+                            },
+                            {
+                                "q": "What is ViewHolder pattern?",
+                                "a": "ViewHolder is a design pattern that caches references to child views. Instead of calling <br>findViewById() every time a list item is displayed (which is slow), ViewHolder stores the view <br>references once. This makes scrolling smooth and fast."
+                            },
+                            {
+                                "q": "Why is RecyclerView memory efficient?",
+                                "a": "RecyclerView reuses view objects. When an item scrolls off screen, instead of destroying it, <br>RecyclerView puts it in a 'recycle pool'. When a new item scrolls in, it takes a view from the pool <br>and just updates the data. Far fewer objects are created."
+                            },
+                            {
+                                "q": "What is ListView and how does it work?",
+                                "a": "ListView is an older widget that displays a scrollable list of items. It uses an Adapter to supply <br>data and create views for each item. It's simpler than RecyclerView but less efficient because it <br>doesn't enforce ViewHolder pattern."
+                            },
+                            {
+                                "q": "What is Adapter in ListView/RecyclerView?",
+                                "a": "An Adapter acts as a bridge between the data source (like an array or database) and the <br>ListView/RecyclerView. It creates the view for each list item and fills it with data. Without an <br>adapter, the list doesn't know what to display.<br><br>   Intent & Navigation"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Intent & Navigation",
+                        "questions": [
+                            {
+                                "q": "What is an Intent?",
+                                "a": "An Intent is a messaging object in Android used to request an action from another component. <br>Think of it as a message or instruction: 'Go to this screen' or 'Open this app'. Intents are used to <br>start Activities, Services, and send Broadcasts."
+                            },
+                            {
+                                "q": "What is the purpose of Intent in Android?",
+                                "a": "Intents are used for: 1) Starting a new Activity (navigating between screens), 2) Passing data <br>between Activities, 3) Starting Services, 4) Sending Broadcasts, 5) Opening external apps like <br>camera or browser."
+                            },
+                            {
+                                "q": "Difference between Explicit and Implicit Intent?",
+                                "a": "Explicit Intent specifies the exact component (Activity/Service) to start by name – used within <br>your own app. Implicit Intent doesn't specify a component but describes an action (like 'view a <br>URL'), and Android finds the right app to handle it."
+                            },
+                            {
+                                "q": "Give an example of Explicit Intent.",
+                                "a": "Intent intent = new Intent(this, SecondActivity.class); startActivity(intent); – This directly opens <br>SecondActivity. You are explicitly naming which component to start. Used to navigate between <br>screens of your own app."
+                            },
+                            {
+                                "q": "Give an example of Implicit Intent.",
+                                "a": "Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse('https://www.google.com')); <br>startActivity(intent); – This asks Android to open a browser. You don't specify which browser –<br>Android picks the default one."
+                            },
+                            {
+                                "q": "What is Intent Filter?",
+                                "a": "An Intent Filter declares what types of Intents a component (Activity, Service, <br>BroadcastReceiver) can respond to. It's defined in AndroidManifest.xml. For example, an Intent <br>Filter can say 'I can handle VIEW actions for http:// URLs'."
+                            },
+                            {
+                                "q": "Where do we define Intent Filters?",
+                                "a": "Intent Filters are defined in AndroidManifest.xml inside the <activity>, <service>, or <receiver> <br>tags. Every app's main Activity has an Intent Filter with MAIN action and LAUNCHER category –<br>that's how Android knows which screen to show first.<br><br>   Android Architecture"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Android Architecture",
+                        "questions": [
+                            {
+                                "q": "What are the main components of Android architecture?",
+                                "a": "Android architecture has 4 main layers: 1) Linux Kernel (bottom) – hardware drivers, memory <br>management; 2) Libraries & Android Runtime – core C/C++ libraries, Dalvik/ART virtual machine; 3) <br>Application Framework – Activity Manager, Content Providers, etc.; 4) Applications (top) – the apps <br>you use."
+                            },
+                            {
+                                "q": "What is the role of Activity in architecture?",
+                                "a": "Activity is part of the Application layer. It represents a single screen and is managed by the <br>Activity Manager in the Framework layer. The Activity Manager handles the back stack, lifecycle, <br>and transitions between activities."
+                            },
+                            {
+                                "q": "What is the role of XML in UI design?",
+                                "a": "XML is used to define the visual structure of the app's UI. It acts as a blueprint for the screen –<br>defining positions, sizes, colors, and types of UI elements. Android's layout inflater converts this <br>XML into actual View objects at runtime.<br><br>   Testing & Debugging"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Testing & Debugging",
+                        "questions": [
+                            {
+                                "q": "What is testing in Android?",
+                                "a": "Testing means checking if your app works correctly. Android supports Unit Testing (testing <br>individual functions), Integration Testing (testing how parts work together), and UI Testing (testing <br>the actual screens and user interactions)."
+                            },
+                            {
+                                "q": "What is JUnit?",
+                                "a": "JUnit is a Java testing framework used to write unit tests. In Android, it's used to test individual <br>methods and classes without running the app on a device. You test logic like calculations, data <br>processing, etc. independently."
+                            },
+                            {
+                                "q": "What is Monkey testing tool?",
+                                "a": "Monkey is a command-line tool provided by Android that generates random user events (taps, <br>swipes, key presses) to stress-test your app. It simulates a 'monkey' randomly pressing things to <br>find crashes or issues."
+                            },
+                            {
+                                "q": "How does Monkey testing work?",
+                                "a": "You run 'adb shell monkey -p your.package.name 500' from command line. This sends 500 <br>random events to your app. If the app crashes or freezes, Monkey reports the event that caused it. <br>Useful for finding stability issues."
+                            },
+                            {
+                                "q": "What is adb?",
+                                "a": "ADB stands for Android Debug Bridge. It's a command-line tool that lets you communicate with <br>an Android device or emulator from your computer. You can install apps, run shell commands, copy <br>files, and view logs using adb.<br><br>   Advanced / Viva-Tricky"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Advanced / Viva-Tricky",
+                        "questions": [
+                            {
+                                "q": "Why do we separate UI (XML) and logic (Java)?",
+                                "a": "Separation makes code cleaner, easier to maintain, and allows team members to work <br>independently (designers on XML, developers on Java). If you mix UI and logic, the code becomes <br>messy and hard to change. This follows the Separation of Concerns principle."
+                            },
+                            {
+                                "q": "What happens if an Activity is not declared in Manifest?",
+                                "a": "The app will crash with an ActivityNotFoundException when you try to start it. All Activities, <br>Services, BroadcastReceivers, and Content Providers MUST be declared in AndroidManifest.xml or <br>Android won't know they exist."
+                            },
+                            {
+                                "q": "What is the role of emulator (AVD)?",
+                                "a": "AVD (Android Virtual Device) is a software-based simulation of an Android phone. It lets you test <br>your app without a real device. You can simulate different screen sizes, OS versions, and hardware <br>configurations in Android Studio."
+                            },
+                            {
+                                "q": "Can multiple activities run at the same time?",
+                                "a": "Only one Activity can be in the foreground (active/visible) at a time. However, other Activities can <br>exist in the background (paused or stopped). Android manages them in a back stack. Only the top <br>Activity of the stack interacts with the user.<br><br>UNIT 2 – UI Controls, Menus, Layouts, Styles, Material Design<br>   User Input Controls (Basics)"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "unitId": "unit-2",
+                "unitTitle": "Unit 2 – UI Controls, Menus & More",
+                "icon": "🎨",
+                "description": "Widgets, menus, dialogs, styles, and Material Design.",
+                "topics": [
+                    {
+                        "topicTitle": "User Input Controls",
+                        "questions": [
+                            {
+                                "q": "What are user input controls in Android?",
+                                "a": "User input controls are UI elements that allow users to interact with the app by entering or <br>selecting data. Examples: EditText (type text), Button (click), CheckBox (select options), <br>RadioButton (choose one), Spinner (dropdown), DatePicker (select date)."
+                            },
+                            {
+                                "q": "Why are UI controls important in mobile applications?",
+                                "a": "UI controls are how users communicate with your app. Without them, the app would just display <br>information with no way to interact. They enable user actions like submitting forms, selecting <br>options, and navigating the app."
+                            },
+                            {
+                                "q": "What package contains most UI controls?",
+                                "a": "Most UI controls are in the android.widget package. For example: android.widget.Button, <br>android.widget.TextView, android.widget.CheckBox, etc. Material Design components come from <br>the com.google.android.material package."
+                            },
+                            {
+                                "q": "What is a widget in Android?",
+                                "a": "In Android, a widget is a UI element – any View component like Button, TextView, ImageView, <br>CheckBox, etc. that appears on screen. The term 'widget' can also refer to App Widgets that appear <br>on the home screen (like weather widgets)."
+                            },
+                            {
+                                "q": "Difference between View and Widget?",
+                                "a": "View is the base class for all UI components. Widget is a term used informally to refer to specific <br>interactive UI elements like Button, EditText, CheckBox. Every widget is a View, but not every View <br>is called a widget (e.g., ViewGroups like LinearLayout are Views but not typically called widgets).<br><br>   Buttons"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Buttons",
+                        "questions": [
+                            {
+                                "q": "What is a Button in Android?",
+                                "a": "A Button is a clickable UI element that triggers an action when pressed. It's one of the most basic <br>and commonly used widgets. Buttons display text and sometimes icons, and perform actions when <br>clicked."
+                            },
+                            {
+                                "q": "Which class does Button extend?",
+                                "a": "Button extends TextView. So a Button is basically a TextView that can be clicked. The class <br>hierarchy is: View → TextView → Button."
+                            },
+                            {
+                                "q": "What is the difference between Button and TextView?",
+                                "a": "TextView just displays text – it's not clickable by default. Button displays text AND is designed to <br>be clicked (it has a clickable appearance with elevation/shadow and click feedback). Button extends <br>TextView and adds click behavior."
+                            },
+                            {
+                                "q": "What are different types of buttons?",
+                                "a": "Types include: Button (standard), ImageButton (shows an image), ToggleButton (on/off), <br>RadioButton (one-of-many selection), CompoundButton (base for checkboxes/radio/toggle), and <br>Material Design variants like OutlinedButton, TextButton, ContainedButton."
+                            },
+                            {
+                                "q": "What is a ToggleButton?",
+                                "a": "A ToggleButton is a two-state button that can be either ON or OFF. It displays different text for <br>each state (default: 'ON' and 'OFF'). Used for settings like enabling/disabling features. Example: a <br>Bluetooth toggle."
+                            },
+                            {
+                                "q": "What is a CompoundButton?",
+                                "a": "CompoundButton is the base class for buttons that have two states (checked/unchecked). <br>CheckBox, RadioButton, and ToggleButton all extend CompoundButton. It provides the isChecked() <br>and setChecked() methods."
+                            },
+                            {
+                                "q": "How do you handle button click events?",
+                                "a": "Two ways: 1) In XML: android:onClick='myMethod' then define myMethod(View v) in the Activity. <br>2) In Java: button.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { // <br>your code } }); The second way is preferred."
+                            },
+                            {
+                                "q": "What is onClickListener()?",
+                                "a": "OnClickListener is an interface with one method: onClick(View v). You implement it and attach it <br>to a View using setOnClickListener(). When the user clicks the view, onClick() is automatically <br>called. It's the standard way to handle click events.<br><br>   Toast"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Toast",
+                        "questions": [
+                            {
+                                "q": "What is a Toast message?",
+                                "a": "A Toast is a small popup message that appears briefly on screen and disappears automatically. <br>It doesn't interrupt the user. Used to show quick feedback like 'File saved' or 'Login successful'. <br>Example: Toast.makeText(this, 'Hello!', Toast.LENGTH_SHORT).show();"
+                            },
+                            {
+                                "q": "Why is Toast used?",
+                                "a": "Toast is used for showing non-critical information that doesn't require user action. It appears for a <br>short time and disappears without the user needing to dismiss it. Good for feedback messages, <br>confirmations, and warnings."
+                            },
+                            {
+                                "q": "Difference between Toast and Notification?",
+                                "a": "Toast appears only while the app is open and disappears automatically. It's temporary and <br>lightweight. Notification appears in the status bar and can persist even when the app is closed. <br>Notifications require user dismissal and can trigger actions."
+                            },
+                            {
+                                "q": "What are LENGTH_SHORT and LENGTH_LONG?",
+                                "a": "These are duration constants for Toast. LENGTH_SHORT shows the toast for about 2 seconds. <br>LENGTH_LONG shows it for about 3.5 seconds. You choose based on how much text you're <br>showing and how important it is."
+                            },
+                            {
+                                "q": "Can we create custom Toast? How?",
+                                "a": "Yes! You can create a custom Toast by inflating a custom XML layout and setting it on the Toast <br>using toast.setView(). This allows you to add images, different text styles, or any custom UI to the <br>toast popup."
+                            },
+                            {
+                                "q": "What are limitations of Toast?",
+                                "a": "Toast has several limitations: it cannot show buttons or interactive elements, it disappears <br>automatically (can't be made permanent), it may not show when app is in background in newer<br>Android versions, and you have no control over when it disappears.<br><br>   CheckBox"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "CheckBox",
+                        "questions": [
+                            {
+                                "q": "What is CheckBox?",
+                                "a": "CheckBox is a two-state UI control (checked or unchecked). Users can check multiple <br>checkboxes at once, unlike RadioButton. Used when you want users to select multiple options from <br>a list. Example: selecting toppings on a pizza app."
+                            },
+                            {
+                                "q": "What are the states of CheckBox?",
+                                "a": "CheckBox has two states: Checked (true) – a checkmark is shown, and Unchecked (false) – the <br>box is empty. Some implementations also have an Indeterminate state (for cases like 'select all' <br>when some items are selected)."
+                            },
+                            {
+                                "q": "Which class does CheckBox extend?",
+                                "a": "CheckBox extends CompoundButton, which extends Button, which extends TextView. So the <br>hierarchy is: View → TextView → Button → CompoundButton → CheckBox."
+                            },
+                            {
+                                "q": "What does isChecked() do?",
+                                "a": "isChecked() is a method of CompoundButton (and thus CheckBox) that returns true if the <br>checkbox is checked, false if it's unchecked. Used to check the current state: if <br>(checkBox.isChecked()) { // do something }"
+                            },
+                            {
+                                "q": "What does setChecked() do?",
+                                "a": "setChecked(boolean) sets the checked state of a CheckBox programmatically. setChecked(true) <br>checks it, setChecked(false) unchecks it. Useful when you want to pre-select options or clear <br>selections from code."
+                            },
+                            {
+                                "q": "Give real-life use case of CheckBox.",
+                                "a": "In a food ordering app: 'Extra cheese', 'Extra sauce', 'No onions' – user can select multiple <br>toppings. In a settings screen: 'Enable notifications', 'Dark mode', 'Auto-update' – these are <br>independent options that can each be on or off.<br><br>   RadioButton & RadioGroup"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "RadioButton & RadioGroup",
+                        "questions": [
+                            {
+                                "q": "What is RadioButton?",
+                                "a": "RadioButton is a two-state button that is usually part of a group. Only ONE RadioButton in a <br>group can be selected at a time – selecting one deselects the others. Used for exclusive choices <br>like selecting gender or payment method."
+                            },
+                            {
+                                "q": "Difference between RadioButton and CheckBox?",
+                                "a": "RadioButton allows only ONE selection from a group (like choosing a gender: Male or Female). <br>CheckBox allows MULTIPLE selections (like choosing hobbies: Cricket, Football, Tennis – you can <br>pick all three). RadioButton = exclusive choice, CheckBox = multiple choice."
+                            },
+                            {
+                                "q": "What is RadioGroup?",
+                                "a": "RadioGroup is a ViewGroup that contains RadioButtons and ensures only one can be selected at <br>a time. Without RadioGroup, RadioButtons act independently. RadioGroup manages the mutual <br>exclusion logic automatically."
+                            },
+                            {
+                                "q": "Why is RadioGroup used?",
+                                "a": "RadioGroup is used to logically group RadioButtons so that only one can be selected at a time. It <br>also provides methods like getCheckedRadioButtonId() to find which RadioButton is selected, <br>making it easy to get the user's choice."
+                            },
+                            {
+                                "q": "Can multiple RadioButtons be selected at once?",
+                                "a": "No – if they are inside a RadioGroup. Only one can be selected at a time. Selecting one <br>automatically deselects the previously selected one. If RadioButtons are NOT in a RadioGroup, <br>they act independently (which is usually not desired)."
+                            },
+                            {
+                                "q": "How to get selected RadioButton value?",
+                                "a": "Use radioGroup.getCheckedRadioButtonId() to get the ID of the selected RadioButton. Then use <br>findViewById(id) to get the RadioButton, and getText() to get its text. Example: int id = <br>radioGroup.getCheckedRadioButtonId(); RadioButton rb = findViewById(id); String value = <br>rb.getText().toString();<br><br>   Spinner"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Spinner",
+                        "questions": [
+                            {
+                                "q": "What is Spinner in Android?",
+                                "a": "Spinner is a dropdown widget that shows a list of options and lets the user select one. It's <br>compact – it shows only the selected item until you tap it, then shows a dropdown list. Like a <br>dropdown menu in websites."
+                            },
+                            {
+                                "q": "How is Spinner different from ListView?",
+                                "a": "Spinner shows a compact dropdown (only visible when tapped) and lets you pick ONE item. <br>ListView shows all items in a scrollable list always visible on screen. Spinner takes less space; <br>ListView shows more items at once."
+                            },
+                            {
+                                "q": "What is Adapter in Spinner?",
+                                "a": "Adapter provides data to the Spinner. ArrayAdapter is commonly used to supply a list of strings. <br>The Adapter creates a view for each item in the dropdown list. Without an adapter, the Spinner has <br>no data to show."
+                            },
+                            {
+                                "q": "Which class Spinner extends?",
+                                "a": "Spinner extends AbsSpinner, which extends AdapterView. The hierarchy is: View → ViewGroup <br>→ AdapterView → AbsSpinner → Spinner."
+                            },
+                            {
+                                "q": "What is OnItemSelectedListener?",
+                                "a": "OnItemSelectedListener is an interface with two methods: onItemSelected() (called when user <br>picks an item) and onNothingSelected() (called when selection disappears). You implement it to <br>respond when the user makes a selection in a Spinner or ListView."
+                            },
+                            {
+                                "q": "Give real-life example of Spinner.",
+                                "a": "Country selector in a registration form, selecting currency type in a payment app, choosing <br>preferred language in settings, selecting class/year in a student app. Any place where you have a <br>fixed set of options and user picks one.<br><br>   Dialogs"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Dialogs",
+                        "questions": [
+                            {
+                                "q": "What is AlertDialog?",
+                                "a": "AlertDialog is a popup window that appears over the current Activity to show important <br>information or ask for user confirmation. It can have a title, message, and up to 3 buttons (Positive, <br>Negative, Neutral). It blocks interaction with the background."
+                            },
+                            {
+                                "q": "When should we use AlertDialog?",
+                                "a": "Use AlertDialog when you need user confirmation before performing an action. Examples: 'Are <br>you sure you want to delete this?' (with Yes/No buttons), 'Connection lost, retry?' or 'Please enter <br>your name' (with an input field)."
+                            },
+                            {
+                                "q": "What are components of AlertDialog?",
+                                "a": "AlertDialog has: Title (optional header text), Icon (optional image), Message (the main content <br>text), Positive Button (like OK/Yes), Negative Button (like Cancel/No), Neutral Button (like Later), <br>and optionally a custom view (for input fields etc.)."
+                            },
+                            {
+                                "q": "How to set title in AlertDialog?",
+                                "a": "Using AlertDialog.Builder: AlertDialog.Builder builder = new AlertDialog.Builder(this); <br>builder.setTitle('Warning'); builder.setMessage('Are you sure?'); builder.setPositiveButton('Yes', <br>listener); AlertDialog dialog = builder.create(); dialog.show();"
+                            },
+                            {
+                                "q": "Difference between Dialog and Toast?",
+                                "a": "Dialog requires user interaction (you must tap a button to dismiss it) and can show complex <br>content with buttons. Toast appears automatically and disappears by itself with no user interaction <br>needed. Dialog is for important decisions; Toast is for quick information."
+                            },
+                            {
+                                "q": "Can AlertDialog block user interaction?",
+                                "a": "Yes – AlertDialog blocks interaction with the activity behind it. The user must respond to the <br>dialog (tap a button) before returning to the app. This is intentional for critical confirmations. You <br>can make it cancellable so tapping outside dismisses it.<br><br>   DatePicker & TimePicker"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "DatePicker & TimePicker",
+                        "questions": [
+                            {
+                                "q": "What is DatePicker?",
+                                "a": "DatePicker is a widget that allows users to select a date (day, month, year). It provides a visual <br>calendar interface. Used in apps like booking, scheduling, or forms that require a date input."
+                            },
+                            {
+                                "q": "What is TimePicker?",
+                                "a": "TimePicker is a widget that allows users to select a time (hours and minutes). It can show a clock<br>face or number spinner. Used in alarm apps, scheduling apps, and forms requiring time input."
+                            },
+                            {
+                                "q": "Difference between DatePicker and TimePicker?",
+                                "a": "DatePicker is for selecting dates (day/month/year) and shows a calendar. TimePicker is for <br>selecting time (hours/minutes) and shows a clock. They're separate widgets but often used together <br>in scheduling apps like 'Set Meeting Date and Time'."
+                            },
+                            {
+                                "q": "Can we select seconds in TimePicker?",
+                                "a": "No – the standard Android TimePicker only allows selection of hours and minutes. It does not <br>support seconds selection. If you need second-level precision, you need to create a custom widget <br>or use a third-party library."
+                            },
+                            {
+                                "q": "Which class does DatePicker extend?",
+                                "a": "DatePicker extends FrameLayout. It's a ViewGroup that contains the calendar or spinner UI <br>internally. Hierarchy: View → ViewGroup → FrameLayout → DatePicker."
+                            },
+                            {
+                                "q": "Give real-world use case of DatePicker.",
+                                "a": "Hotel booking app: 'Select check-in date' and 'Select check-out date'. Birthday input in <br>registration form. Appointment scheduling in a hospital app. Task deadline selection in a project <br>management app.<br><br>   Menus"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Menus",
+                        "questions": [
+                            {
+                                "q": "What are menus in Android?",
+                                "a": "Menus are UI components that provide additional options/actions to the user without cluttering <br>the main screen. They appear when requested (through a button tap, long press, etc.) and <br>disappear after an option is selected."
+                            },
+                            {
+                                "q": "Types of menus in Android?",
+                                "a": "There are 3 types: 1) Options Menu – appears in the top action bar, for general app actions. 2) <br>Context Menu – appears on long press of an item, for item-specific actions. 3) Popup Menu –<br>appears anchored to a specific view, for contextual actions."
+                            },
+                            {
+                                "q": "What is Option Menu?",
+                                "a": "Options Menu is the menu that appears in the app's toolbar/action bar, typically with 3 dots <br>(overflow menu) or visible icons. It contains general app actions like Settings, Search, Share, <br>About. Every Activity can have its own Options Menu."
+                            },
+                            {
+                                "q": "When is Option Menu used?",
+                                "a": "Options Menu is used for global/general actions that apply to the whole screen. Examples: <br>Search, Filter, Refresh, Share, Settings, Help. Actions that don't relate to a specific item on screen <br>belong in the Options Menu."
+                            },
+                            {
+                                "q": "What method is used to create Option Menu?",
+                                "a": "Override onCreateOptionsMenu(Menu menu) in your Activity. Inside, inflate a menu XML file <br>using getMenuInflater().inflate(R.menu.my_menu, menu). To handle clicks, override <br>onOptionsItemSelected(MenuItem item)."
+                            },
+                            {
+                                "q": "What is onCreateOptionsMenu()?",
+                                "a": "onCreateOptionsMenu() is a callback method that Android calls when it needs to create the <br>options menu for an Activity. You inflate your menu XML here. It's called once when the Activity is <br>created. Return true to display the menu."
+                            },
+                            {
+                                "q": "What is Context Menu?",
+                                "a": "Context Menu is a floating menu that appears when the user long-presses on a UI element. It <br>shows actions relevant to that specific item. Example: long press on a message in WhatsApp <br>shows Copy, Delete, Forward options."
+                            },
+                            {
+                                "q": "When does Context Menu appear?",
+                                "a": "Context Menu appears when the user performs a long press (press and hold) on a view that has <br>a context menu registered. Register using registerForContextMenu(view). Override <br>onCreateContextMenu() to define its items."
+                            },
+                            {
+                                "q": "What is Popup Menu?",
+                                "a": "Popup Menu is a menu that appears anchored to a specific View. It drops down from that view. <br>Unlike Context Menu (triggered by long press), Popup Menu is triggered by a regular click (usually <br>on a button). Example: clicking a 3-dot button on a list item."
+                            },
+                            {
+                                "q": "Difference between Context Menu and Popup Menu?",
+                                "a": "Context Menu is triggered by long press and appears as a floating dialog in the center. Popup <br>Menu is triggered by normal click and appears anchored below a specific view. Popup Menu is part <br>of Material Design and looks more modern."
+                            },
+                            {
+                                "q": "Can menus have icons?",
+                                "a": "Yes – menu items can have icons using android:icon attribute in the menu XML. However, icons <br>only show in the toolbar (Options Menu). Context Menu items typically show only text. You can use <br>showAsAction='ifRoom' to control when icons appear in toolbar.<br><br>   Navigation"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Navigation",
+                        "questions": [
+                            {
+                                "q": "What is navigation in Android?",
+                                "a": "Navigation refers to how users move between different screens (Activities/Fragments) in an app. <br>Android provides the Back button, Up button, Navigation Drawer, Bottom Navigation, and the <br>Navigation component library for managing navigation."
+                            },
+                            {
+                                "q": "What is Up Navigation?",
+                                "a": "Up Navigation is the left arrow (←) button in the app's toolbar that takes you to the logical parent <br>screen. Unlike the Back button (which goes to the previous screen), Up goes to the parent in the <br>app's hierarchy, regardless of how you got there."
+                            },
+                            {
+                                "q": "Difference between Back button and Up button?",
+                                "a": "Back button follows your navigation history (like a browser back button) – it goes to wherever you <br>came from. Up button follows the app's logical structure – it always goes to the parent screen <br>defined in the manifest. They may go to the same or different places."
+                            },
+                            {
+                                "q": "How do you enable Up navigation?",
+                                "a": "In the child Activity's onCreate(): getSupportActionBar().setDisplayHomeAsUpEnabled(true); And <br>in AndroidManifest.xml, declare the parent: android:parentActivityName='.MainActivity'. Android <br>then handles the Up button automatically."
+                            },
+                            {
+                                "q": "What is parentActivityName?",
+                                "a": "parentActivityName is an attribute in AndroidManifest.xml that declares which Activity is the <br>logical parent of another. Used for Up navigation. Example: <activity android:name='.DetailActivity' <br>android:parentActivityName='.MainActivity'/>"
+                            },
+                            {
+                                "q": "What is onBackPressed()?",
+                                "a": "onBackPressed() is a method called when the user presses the Back button. By default, it <br>finishes the current Activity. You can override it to customize Back button behavior – like showing a <br>'Do you want to exit?' dialog instead of closing immediately.<br><br>   Styles & Themes"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Styles & Themes",
+                        "questions": [
+                            {
+                                "q": "What is a Style in Android?",
+                                "a": "A Style is a collection of formatting attributes (like text size, color, font, padding) that can be <br>applied to a specific View. Instead of setting each property individually on every View, you define a <br>Style once and apply it to multiple views."
+                            },
+                            {
+                                "q": "What is a Theme?",
+                                "a": "A Theme is a Style applied to an entire Activity or Application (not just one View). It defines the <br>overall look of all Views in the app – colors, fonts, button styles, etc. Think of Theme as a global <br>style that affects everything."
+                            },
+                            {
+                                "q": "Difference between Style and Theme?",
+                                "a": "Style applies to a single View (one button, one textview). Theme applies to an entire Activity or <br>the whole Application. A Theme is essentially a Style applied at a higher level. You use Theme for <br>app-wide consistency and Style for specific components."
+                            },
+                            {
+                                "q": "Where are styles defined?",
+                                "a": "Styles are defined in res/values/styles.xml (older) or res/values/themes.xml (newer projects). <br>This is an XML resource file where you define <style> elements with <item> attributes."
+                            },
+                            {
+                                "q": "What is styles.xml?",
+                                "a": "styles.xml is the resource file where you define Style and Theme resources. It lives in <br>res/values/. Each style has a name and a list of items (attributes and their values). Android Studio <br>creates this file automatically when you create a project."
+                            },
+                            {
+                                "q": "How do you apply a style to a View?",
+                                "a": "In your layout XML, use the style attribute: <Button style='@style/MyButtonStyle' .../> You cannot <br>apply a style to a View from Java code directly (you'd need to set each attribute individually in <br>Java)."
+                            },
+                            {
+                                "q": "How do you apply theme to an Activity?",
+                                "a": "In AndroidManifest.xml: <activity android:name='.MainActivity' <br>android:theme='@style/MyTheme'/>. For the whole app: <application <br>android:theme='@style/AppTheme'>. The theme applies to all Views inside automatically."
+                            },
+                            {
+                                "q": "What is parent theme?",
+                                "a": "Parent theme is the base theme that your custom theme inherits from. Using <br>parent='Theme.MaterialComponents.DayNight' means your theme gets all Material Design <br>attributes and you only need to override the ones you want to change. It's like extending a class in <br>Java."
+                            },
+                            {
+                                "q": "Can we create custom styles?",
+                                "a": "Yes! In styles.xml: <style name='MyButtonStyle' <br>parent='Widget.MaterialComponents.Button'><item name='android:textSize'>18sp</item><item <br>name='android:background'>@color/blue</item></style>. Then apply with <br>style='@style/MyButtonStyle' in XML.<br><br>   Material Design"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Material Design",
+                        "questions": [
+                            {
+                                "q": "What is Material Design?",
+                                "a": "Material Design is a visual design language developed by Google in 2014. It provides guidelines <br>for creating beautiful, consistent, and intuitive UIs across platforms. It uses concepts from the <br>physical world like paper, shadows, and depth to make digital interfaces feel natural."
+                            },
+                            {
+                                "q": "Who developed Material Design?",
+                                "a": "Material Design was developed and introduced by Google at Google I/O 2014. It was designed <br>to create a unified design experience across Android, web, and other Google platforms. It is now <br>maintained and updated regularly by Google."
+                            },
+                            {
+                                "q": "Why is Material Design important?",
+                                "a": "Material Design provides consistent, beautiful UI that users are already familiar with. It includes <br>ready-made components (buttons, cards, dialogs) that look great. It improves usability, accessibility, <br>and makes apps look professional without designing from scratch."
+                            },
+                            {
+                                "q": "What are Material Design Components?",
+                                "a": "Material Design Components (MDC) are ready-to-use UI widgets following Material guidelines. <br>Examples: MaterialButton, TextInputLayout, BottomNavigationView, FloatingActionButton, Chip, <br>CardView, NavigationDrawer, Snackbar, and many more."
+                            },
+                            {
+                                "q": "What is primary color?",
+                                "a": "Primary color is the main color of your app – used for the toolbar, prominent buttons, and key UI <br>elements. It defines your app's brand. In Material Design, you define it as colorPrimary in your <br>theme. Example: blue for a banking app."
+                            },
+                            {
+                                "q": "What is secondary color?",
+                                "a": "Secondary color (colorSecondary) is an accent color used for floating action buttons, selection <br>controls, and highlights. It complements the primary color and is used sparingly for emphasis. <br>Example: orange accent on a blue primary app."
+                            },
+                            {
+                                "q": "What are light and dark variants?",
+                                "a": "Light variant (colorPrimaryLight) is a lighter shade of the primary color. Dark variant <br>(colorPrimaryDark) is a darker shade. Dark variant is typically used for the status bar color. In <br>Material Design 3, these are replaced with tonal palettes."
+                            },
+                            {
+                                "q": "What is Typography in Material Design?",
+                                "a": "Typography in Material Design defines rules for text styles – including font family, size, weight, <br>and letter spacing for different types of text (headlines, body text, captions, buttons). Material <br>Design defines a type scale with roles like displayLarge, headlineMedium, bodySmall."
+                            },
+                            {
+                                "q": "Why is Roboto font commonly used?",
+                                "a": "Roboto is Google's custom font designed specifically for Android and Material Design. It's <br>optimized for readability on screens of all sizes. It's the default font for Android apps and is used in <br>most Material Design examples and templates.<br><br>   Layouts"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Layouts",
+                        "questions": [
+                            {
+                                "q": "What is Android Layout?",
+                                "a": "A Layout is a ViewGroup that defines the visual structure of an app's UI – how Views are <br>positioned and sized on screen. Layouts are defined in XML files and tell Android where each <br>button, text, and image should appear."
+                            },
+                            {
+                                "q": "What is ViewGroup?",
+                                "a": "ViewGroup is a special View that contains other Views (called children). It's the base class for all <br>layouts. ViewGroups don't display content themselves – they position and organize their children. <br>Examples: LinearLayout, RelativeLayout, ConstraintLayout."
+                            },
+                            {
+                                "q": "What is LinearLayout?",
+                                "a": "LinearLayout arranges its child Views in a single line – either horizontally (side by side) or <br>vertically (one below another). It's the simplest layout. Controlled by android:orientation='horizontal' <br>or 'vertical'."
+                            },
+                            {
+                                "q": "What is orientation in LinearLayout?",
+                                "a": "Orientation determines how children are arranged. horizontal – children are placed side by side <br>from left to right. vertical – children are stacked one below another. Set using android:orientation <br>attribute. Default is horizontal."
+                            },
+                            {
+                                "q": "What is RelativeLayout?",
+                                "a": "RelativeLayout positions children relative to each other or relative to the parent. You can say 'put <br>button B to the right of button A' or 'center this text in parent'. More flexible than LinearLayout but <br>can become complex with many elements."
+                            },
+                            {
+                                "q": "What is ConstraintLayout?",
+                                "a": "ConstraintLayout is a powerful, flexible layout where you position Views using constraints (like <br>anchors/guidelines). It can create complex layouts with a flat view hierarchy (no nested layouts <br>needed), making it more efficient. It's the recommended layout in modern Android."
+                            },
+                            {
+                                "q": "Difference between LinearLayout and RelativeLayout?",
+                                "a": "LinearLayout places views in a straight line (horizontal or vertical) – simple and easy to use. <br>RelativeLayout places views relative to each other or the parent – more flexible but can get <br>complicated. ConstraintLayout is even more flexible than both."
+                            },
+                            {
+                                "q": "Why is ConstraintLayout preferred?",
+                                "a": "ConstraintLayout is preferred because it can create complex UIs without nesting layouts (which <br>hurts performance), works perfectly with Android Studio's visual designer, supports guidelines and <br>barriers, and is flexible enough to replace both LinearLayout and RelativeLayout."
+                            },
+                            {
+                                "q": "What is layout hierarchy?",
+                                "a": "Layout hierarchy refers to the tree structure of Views. A ConstraintLayout (parent) contains <br>multiple child Views. Those children may contain their own children. Deeply nested hierarchies <br>(many levels) slow down rendering – that's why ConstraintLayout (flat hierarchy) is preferred.<br><br>   Advanced / Tricky Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Advanced / Tricky Questions",
+                        "questions": [
+                            {
+                                "q": "Why do we use Adapter with Spinner?",
+                                "a": "Adapter provides the data and creates the view for each item in the Spinner's dropdown. Without <br>Adapter, Spinner doesn't know what to show. Adapter is the bridge between your data (a list of <br>strings) and the Spinner UI widget."
+                            },
+                            {
+                                "q": "What happens if we don’t use RadioGroup?",
+                                "a": "Without RadioGroup, RadioButtons act independently – you can select multiple RadioButtons at <br>the same time, which defeats the purpose of radio buttons (single selection). RadioGroup provides <br>the mutual exclusion that ensures only one can be selected."
+                            },
+                            {
+                                "q": "Why XML is preferred for UI instead of Java?",
+                                "a": "XML is preferred because: it separates design from logic, it's easier to visualize (Android Studio <br>shows a live preview), non-developers (designers) can edit XML, styles can be reused easily, and <br>XML changes don't require recompiling Java code."
+                            },
+                            {
+                                "q": "Can UI be created without XML?",
+                                "a": "Yes! You can create Views entirely in Java/Kotlin code: Button btn = new Button(this); <br>btn.setText('Click'); layout.addView(btn);. But this is not recommended because it mixes UI and <br>logic, is harder to maintain, and you lose the visual designer."
+                            },
+                            {
+                                "q": "What is event handling in Android?",
+                                "a": "Event handling is responding to user actions like clicks, long presses, key presses, swipes, etc. <br>Android uses a listener pattern: you set a listener on a view, and Android calls your listener's <br>method when the event occurs. Example: setOnClickListener for click events."
+                            },
+                            {
+                                "q": "How does Android handle multiple UI events?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is difference between visibility: gone, invisible, visible?",
+                                "a": "VISIBLE – the view is shown normally. INVISIBLE – the view is hidden but still takes up space in <br>the layout (like opacity 0). GONE – the view is completely removed from the layout, takes no space <br>(as if it doesn't exist).<br><br>UNIT 3 – Broadcast Receiver, Services, AlarmManager, Storage<br>   Broadcast Receiver (Core Concepts)"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "unitId": "unit-3",
+                "unitTitle": "Unit 3 – Broadcast, Services & Storage",
+                "icon": "⚙️",
+                "description": "Background processing, broadcasts, and data persistence.",
+                "topics": [
+                    {
+                        "topicTitle": "Broadcast Receiver",
+                        "questions": [
+                            {
+                                "q": "What is a Broadcast Receiver?",
+                                "a": "Broadcast Receiver is an Android component that listens for broadcast messages (system-wide <br>announcements). It's like a radio receiver that picks up signals. When a specific event happens (like <br>battery low, Wi-Fi connected), Android broadcasts it, and your Broadcast Receiver catches it and <br>runs code."
+                            },
+                            {
+                                "q": "Why are Broadcast Receivers used in Android?",
+                                "a": "Broadcast Receivers allow apps to respond to system events even when the app is not running. <br>Example: when device boots, your app can start a Service. When headphones are unplugged, your <br>music app can pause playback. They enable event-driven programming at the system level."
+                            },
+                            {
+                                "q": "What is a broadcast intent?",
+                                "a": "A broadcast intent is a special Intent that is sent to all interested components (not just one <br>specific component). It's like a public announcement. Any app that has registered to listen for that <br>type of broadcast will receive it and can react."
+                            },
+                            {
+                                "q": "How does a Broadcast Receiver work internally?",
+                                "a": "When a broadcast is sent (by system or app), Android looks up all registered receivers for that <br>action. For each matching receiver, Android creates the receiver object, calls its onReceive() <br>method with the Intent, and then destroys the receiver. The whole process is very brief."
+                            },
+                            {
+                                "q": "Which class is extended to create a Broadcast Receiver?",
+                                "a": "You extend the BroadcastReceiver abstract class and override its onReceive() method. <br>Example: public class MyReceiver extends BroadcastReceiver { @Override public void <br>onReceive(Context context, Intent intent) { // handle broadcast } }"
+                            },
+                            {
+                                "q": "What is the role of onReceive() method?",
+                                "a": "onReceive() is the entry point for a Broadcast Receiver – the method that's called when a <br>matching broadcast is received. ALL your receiver logic goes here. IMPORTANT: onReceive() runs <br>on the main thread and must complete quickly (under 5 seconds) or Android will kill it."
+                            },
+                            {
+                                "q": "What type of parameter does onReceive() receive?",
+                                "a": "onReceive() receives two parameters: Context context (the application context for accessing <br>resources and starting components) and Intent intent (the broadcast Intent that contains the action <br>that triggered the receiver and any extra data).<br><br>   Implementation"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Implementation",
+                        "questions": [
+                            {
+                                "q": "What are the steps to create a Broadcast Receiver?",
+                                "a": "Steps: 1) Create a class extending BroadcastReceiver. 2) Override onReceive() method. 3) Write <br>your code in onReceive(). 4) Register the receiver (in Manifest for static, or in code for dynamic). 5) <br>Define the IntentFilter (which broadcasts to listen for)."
+                            },
+                            {
+                                "q": "How do you register a Broadcast Receiver?",
+                                "a": "Two ways: 1) Static (in Manifest): <receiver android:name='.MyReceiver'><intent-filter><action <br>android:name='android.intent.action.BOOT_COMPLETED'/></intent-filter></receiver>. 2) Dynamic <br>(in code): registerReceiver(myReceiver, new IntentFilter(Intent.ACTION_BOOT_COMPLETED));"
+                            },
+                            {
+                                "q": "Where do you register a Broadcast Receiver?",
+                                "a": "Static registration: in AndroidManifest.xml – receiver is always active even when app is closed. <br>Dynamic registration: in Activity/Fragment code (usually in onResume() or onCreate()) – receiver is <br>active only while the Activity is running."
+                            },
+                            {
+                                "q": "What is AndroidManifest.xml role in Broadcast Receiver?",
+                                "a": "AndroidManifest.xml is used for static registration of Broadcast Receivers. You declare the <br>receiver with its class name and IntentFilter (what broadcasts it listens to). Statically registered <br>receivers can receive broadcasts even when the app is not running."
+                            },
+                            {
+                                "q": "Can we register receiver programmatically?",
+                                "a": "Yes! Dynamic registration: IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_LOW); <br>MyReceiver receiver = new MyReceiver(); registerReceiver(receiver, filter); To stop: <br>unregisterReceiver(receiver); Always unregister to prevent memory leaks."
+                            },
+                            {
+                                "q": "Difference between static and dynamic registration?",
+                                "a": "Static (Manifest): Always active, survives app closure, good for system events like boot. Dynamic <br>(Code): Active only when registered (usually when Activity is running), must unregister when done, <br>more flexible, required for some broadcast types in Android 8+.<br><br>   System Broadcasts"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "System Broadcasts",
+                        "questions": [
+                            {
+                                "q": "What are system broadcast intents?",
+                                "a": "System broadcast intents are broadcasts sent by Android itself when system-level events occur. <br>Apps can listen for these to react to system changes. Examples: device boots, battery is low, <br>airplane mode changes, Wi-Fi connects/disconnects, headphones plug/unplug."
+                            },
+                            {
+                                "q": "Give examples of system broadcast events.",
+                                "a": "android.intent.action.BOOT_COMPLETED (device finished booting), ACTION_BATTERY_LOW <br>(battery is running low), ACTION_POWER_CONNECTED (charger plugged in), <br>ACTION_POWER_DISCONNECTED (charger unplugged), <br>ACTION_AIRPLANE_MODE_CHANGED, ACTION_HEADSET_PLUG, CONNECTIVITY_CHANGE <br>(network changed)."
+                            },
+                            {
+                                "q": "What happens when device boots?",
+                                "a": "When device boots, Android broadcasts ACTION_BOOT_COMPLETED after the system is fully <br>loaded. Apps with RECEIVE_BOOT_COMPLETED permission and a registered receiver for this <br>action can run code at boot – like starting a background service, scheduling alarms, or restoring <br>settings."
+                            },
+                            {
+                                "q": "What is ACTION_BOOT_COMPLETED?",
+                                "a": "ACTION_BOOT_COMPLETED is a system broadcast sent when the device finishes booting. <br>Apps use it to restart services that were running before the phone was turned off. Requires the <br>RECEIVE_BOOT_COMPLETED permission in AndroidManifest.xml."
+                            },
+                            {
+                                "q": "What is ACTION_BATTERY_LOW?",
+                                "a": "ACTION_BATTERY_LOW is a broadcast sent when the battery level falls below a critical <br>threshold. Apps can listen for this to reduce their resource usage – like stopping background syncs, <br>dimming display, or notifying user to charge the device."
+                            },
+                            {
+                                "q": "What is ACTION_POWER_CONNECTED?",
+                                "a": "ACTION_POWER_CONNECTED is broadcast when the device is plugged into a charger. Apps <br>use this to start power-intensive tasks that should only run while charging – like syncing large files, <br>running backups, or performing heavy computations.<br><br>   Custom Broadcasts"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Custom Broadcasts",
+                        "questions": [
+                            {
+                                "q": "What is a custom broadcast?",
+                                "a": "A custom broadcast is a broadcast that your app creates and sends itself, with a custom action <br>name. Other parts of your app (or other apps if you choose) can listen for it. Used for <br>communication between different parts of an app."
+                            },
+                            {
+                                "q": "Why do we use custom broadcast?",
+                                "a": "Custom broadcasts are used for communication between components that can't directly call <br>each other. Example: a Service can broadcast 'download complete' and an Activity listening for it <br>can update the UI. It's a way to send messages across your app."
+                            },
+                            {
+                                "q": "How do you send a custom broadcast?",
+                                "a": "Create an Intent with a custom action string: Intent intent = new <br>Intent('com.myapp.MY_CUSTOM_ACTION'); intent.putExtra('data', 'some value'); <br>sendBroadcast(intent); Any receiver registered for 'com.myapp.MY_CUSTOM_ACTION' will receive <br>it."
+                            },
+                            {
+                                "q": "What is sendBroadcast()?",
+                                "a": "sendBroadcast(Intent) is a method of Context that sends a broadcast to all registered receivers <br>matching the intent's action. All matching receivers receive it, but in no guaranteed order. It's the <br>standard way to send a broadcast."
+                            },
+                            {
+                                "q": "What is sticky broadcast?",
+                                "a": "A sticky broadcast is one that stays in the system after being sent. When a new receiver <br>registers for that broadcast, it immediately receives the last sticky broadcast even if it was sent <br>before the receiver registered. Most are sent by system (like battery level)."
+                            },
+                            {
+                                "q": "Difference between normal and sticky broadcast?",
+                                "a": "Normal broadcast disappears after all registered receivers process it – late receivers miss it. <br>Sticky broadcast is remembered by Android – late-registering receivers get it immediately upon <br>registration. Note: sendStickyBroadcast() is deprecated in newer Android versions.<br><br>   Conceptual / Viva-Tricky"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Broadcast (Conceptual)",
+                        "questions": [
+                            {
+                                "q": "Difference between Broadcast Receiver and Activity?",
+                                "a": "Activity has a UI and runs for a long time interacting with the user. Broadcast Receiver has NO <br>UI and runs very briefly (just onReceive()). Activity is started explicitly (Intent) or from launcher. <br>Receiver is triggered automatically by matching broadcasts. Receiver can't show UI directly."
+                            },
+                            {
+                                "q": "Does Broadcast Receiver have UI?",
+                                "a": "No – Broadcast Receiver has NO user interface. It's a background component that reacts to <br>events. If you need to show UI (like a notification or dialog) in response to a broadcast, you start an <br>Activity or show a Notification from within onReceive()."
+                            },
+                            {
+                                "q": "Is Broadcast Receiver synchronous or asynchronous?",
+                                "a": "Broadcast Receiver's onReceive() is called synchronously on the main thread. The entire <br>processing must complete quickly. For ordered broadcasts, the next receiver is called after the <br>current one finishes. For async work, you must start a Service or use goAsync()."
+                            },
+                            {
+                                "q": "Can Broadcast Receiver perform long operations?",
+                                "a": "No! onReceive() runs on the main thread and must finish within ~5 seconds or Android will show <br>ANR (App Not Responding). For long operations: 1) Start a Service, 2) Use WorkManager, or 3) <br>Call goAsync() to get more time but still limited."
+                            },
+                            {
+                                "q": "What happens if onReceive() takes too long?",
+                                "a": "If onReceive() takes more than ~5 seconds, Android will kill it and show an ANR dialog. The <br>operation will be incomplete. For long operations, always delegate to a Service (startService()) or <br>WorkManager inside onReceive() and return quickly.<br><br>   Services<br>Basics"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Services (Basics)",
+                        "questions": [
+                            {
+                                "q": "What is a Service in Android?",
+                                "a": "A Service is an Android component that runs in the background without a user interface. It <br>performs long-running operations like downloading files, playing music, syncing data, or running <br>computations. Services keep running even when the user switches to another app."
+                            },
+                            {
+                                "q": "Why are services used?",
+                                "a": "Services are used for operations that: don't need UI, need to continue when the app is not in <br>foreground, need to run for a long time. Examples: music player (plays in background), file <br>downloader, data sync, GPS tracking, VoIP call."
+                            },
+                            {
+                                "q": "Does Service have UI?",
+                                "a": "No – Service has no user interface. It runs entirely in the background. If you need to show status <br>(like download progress), Service can post a Notification. If user interaction is needed, Service can <br>start an Activity or update a shared data source that Activity observes."
+                            },
+                            {
+                                "q": "What kind of tasks are handled by services?",
+                                "a": "Services handle: playing audio/video in background, downloading/uploading files, syncing data <br>with server, GPS/location tracking, maintaining network connections, processing sensor data, <br>running timers, VoIP calls (WhatsApp call), and any task that needs to run without the app in <br>foreground.<br><br>Types of Services"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Services (Types)",
+                        "questions": [
+                            {
+                                "q": "What are the types of services?",
+                                "a": "Android has 3 main service types: 1) Started Service – started by startService(), runs <br>independently. 2) Bound Service – bound by bindService(), provides interface for component <br>interaction. 3) Foreground Service – started service with a visible notification, used for noticeable <br>tasks like music playback."
+                            },
+                            {
+                                "q": "What is a Started Service?",
+                                "a": "A Started Service is started by calling startService(Intent). It runs indefinitely until it stops itself <br>(stopSelf()) or another component stops it (stopService()). It doesn't directly communicate results <br>back to the starter. Used for fire-and-forget operations like file download."
+                            },
+                            {
+                                "q": "What is a Bound Service?",
+                                "a": "A Bound Service allows components to bind to it and interact with it (call its methods). <br>Components call bindService() to connect. The service provides an IBinder interface for <br>communication. When all clients unbind, the service is destroyed. Used for app-service <br>communication."
+                            },
+                            {
+                                "q": "What is Foreground Service?",
+                                "a": "Foreground Service is a started service that shows a persistent notification in the status bar, <br>indicating it's actively doing something. It has higher priority – Android won't kill it unless extremely <br>low memory. Examples: music player, navigation, workout tracker."
+                            },
+                            {
+                                "q": "What is Background Service?",
+                                "a": "Background Service is a service that does work the user doesn't directly notice. In Android 8.0+, <br>background services have restrictions – they can only run for a short time when the app is not in <br>foreground. WorkManager is the recommended replacement for most background service use <br>cases.<br><br>Lifecycle"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Services (Lifecycle)",
+                        "questions": [
+                            {
+                                "q": "What are lifecycle methods of a Service?",
+                                "a": "Service lifecycle: onCreate() (service created), onStartCommand() (called each time <br>startService() is called), onBind() (called when a component binds), onUnbind() (called when all <br>clients unbind), onRebind() (called when new client binds after unbind), onDestroy() (service is <br>shutting down)."
+                            },
+                            {
+                                "q": "What is onCreate() in Service?",
+                                "a": "onCreate() is called once when the Service is first created. Do one-time setup here – initialize <br>resources, create threads, set up data. Not called again if the service is already running and <br>startService() is called again."
+                            },
+                            {
+                                "q": "What is onStartCommand()?",
+                                "a": "onStartCommand() is called every time startService() is called. This is where the service's work <br>begins. It receives the Intent passed to startService(). Returns an int (START_STICKY, <br>START_NOT_STICKY, START_REDELIVER_INTENT) telling Android what to do if service is <br>killed."
+                            },
+                            {
+                                "q": "What is onBind()?",
+                                "a": "onBind() is called when a component calls bindService() to connect to the service. It returns an <br>IBinder object that the client uses to communicate with the service. For started services that don't <br>support binding, return null from onBind()."
+                            },
+                            {
+                                "q": "What is onDestroy()?",
+                                "a": "onDestroy() is called when the service is being shut down – either stopped by itself/another <br>component or killed by Android. Clean up all resources here: stop threads, release media players, <br>unregister receivers, etc. Failure to clean up causes resource/memory leaks."
+                            },
+                            {
+                                "q": "What is onUnbind()?",
+                                "a": "onUnbind() is called when all clients have disconnected from a bound service. Return true if you <br>want onRebind() to be called when new clients bind. This is the signal that no components are <br>currently using the service through binding.<br><br>Practical / Usage"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Services (Practical)",
+                        "questions": [
+                            {
+                                "q": "How do you start a service?",
+                                "a": "Using Intent: Intent serviceIntent = new Intent(this, MyService.class); serviceIntent.putExtra('key', <br>'value'); startService(serviceIntent); For foreground service on Android 8+: <br>startForegroundService(serviceIntent);"
+                            },
+                            {
+                                "q": "How do you stop a service?",
+                                "a": "From outside: stopService(new Intent(this, MyService.class)); From inside the service itself: <br>stopSelf(); For bound service: when all clients call unbindService(), service stops automatically if <br>also not started."
+                            },
+                            {
+                                "q": "What is startService()?",
+                                "a": "startService(Intent) is a Context method that starts a Service. If the service isn't running, Android <br>creates it and calls onCreate() and onStartCommand(). If already running, only onStartCommand() <br>is called again. The service keeps running until stopped."
+                            },
+                            {
+                                "q": "What is stopService()?",
+                                "a": "stopService(Intent) is called to stop a running service from outside. It causes Android to call <br>onDestroy() on the service. After this, the service object is garbage collected. From inside service, <br>use stopSelf() instead."
+                            },
+                            {
+                                "q": "What is bindService()?",
+                                "a": "bindService(Intent, ServiceConnection, flags) connects a component to a Service. <br>ServiceConnection is a callback interface with onServiceConnected() (called when connected, <br>gives IBinder) and onServiceDisconnected() (called when connection is lost). Allows method calls <br>on the service.<br><br>Conceptual / Tricky"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Services (Conceptual)",
+                        "questions": [
+                            {
+                                "q": "Difference between Activity and Service?",
+                                "a": "Activity has UI, runs in foreground, user interacts with it. Service has no UI, runs in background, <br>no direct user interaction. Activity lifecycle is driven by user navigation. Service lifecycle is driven by <br>startService/bindService calls. Service keeps running when user leaves app; Activity doesn't."
+                            },
+                            {
+                                "q": "Can Service run after app is closed?",
+                                "a": "Yes! A Started Service can keep running even after the user closes the app (swipes it away from <br>recents). However, Android may kill background services when memory is low. Foreground <br>services (with notification) are much less likely to be killed. WorkManager is more reliable for <br>guaranteed execution."
+                            },
+                            {
+                                "q": "Why should Service use a separate thread?",
+                                "a": "Service runs on the main/UI thread by default. Long operations on the main thread cause ANR <br>(App Not Responding). So services should create a background thread (Thread, AsyncTask, <br>ExecutorService) for heavy work, keeping the main thread free for UI responsiveness."
+                            },
+                            {
+                                "q": "What happens if Service runs on main thread?",
+                                "a": "If Service does heavy work on the main thread (like downloading files, complex calculations), the <br>UI will freeze – buttons won't respond, animations will stutter. If it takes more than 5 seconds, <br>Android shows an ANR dialog and may kill the app."
+                            },
+                            {
+                                "q": "Can multiple components bind to a service?",
+                                "a": "Yes! Multiple components (Activities, Fragments, other Services) can all bind to the same <br>Service simultaneously. The service tracks all connected clients. The service is only destroyed <br>when ALL clients have unbound AND the service isn't also started via startService().<br><br>   Foreground vs Background Service"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Foreground vs Background",
+                        "questions": [
+                            {
+                                "q": "What is a Foreground Service?",
+                                "a": "Foreground Service is a service that performs operations noticeable to the user. It MUST display <br>an ongoing notification that users can see in the notification bar. This tells users 'Hey, I'm actively <br>doing something'. It has higher priority and Android won't kill it easily."
+                            },
+                            {
+                                "q": "Why does Foreground Service show notification?",
+                                "a": "Notification is required so users know the service is running and consuming resources. It gives <br>transparency and user control – they can tap the notification to see status or stop the service. <br>Without notification, users wouldn't know why their battery is draining."
+                            },
+                            {
+                                "q": "Give example of Foreground Service.",
+                                "a": "Music player app: when you play music and go to another app, the music continues. A <br>notification shows the current song with play/pause/skip controls. This is a Foreground Service. <br>Other examples: GPS navigation (Maps), file upload progress, fitness tracking (step counter)."
+                            },
+                            {
+                                "q": "What is Background Service limitation in new Android versions?",
+                                "a": "From Android 8.0 (Oreo), background services are restricted. When the app goes to background, <br>Android allows the service to run for only a few minutes before stopping it. Solution: use <br>Foreground Service (with notification) for longer tasks, or use WorkManager for deferrable <br>background work.<br><br>   Advanced Concepts"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Advanced Concepts",
+                        "questions": [
+                            {
+                                "q": "What is IntentService?",
+                                "a": "IntentService was a Service subclass that automatically handled background threads. It <br>processed intents one at a time in a worker thread and stopped itself when done. Simpler than <br>Service for sequential background tasks. Deprecated in Android 11 (API 30)."
+                            },
+                            {
+                                "q": "Why is IntentService deprecated?",
+                                "a": "IntentService is deprecated because it doesn't work well with Android 8+ background service <br>restrictions. WorkManager is the recommended replacement – it's more reliable, handles system <br>constraints (run only on Wi-Fi, when charging), survives device restarts, and is backward <br>compatible."
+                            },
+                            {
+                                "q": "What is WorkManager?",
+                                "a": "WorkManager is a Jetpack library for reliable, deferrable background work. It guarantees your <br>task runs even if the app exits or device restarts. It handles constraints (run only on Wi-Fi, when <br>battery is not low), chaining tasks, and backward compatibility across Android versions."
+                            },
+                            {
+                                "q": "Why is WorkManager preferred now?",
+                                "a": "WorkManager is preferred because: it guarantees execution (even after restart), supports <br>constraints (only run on Wi-Fi), is backward compatible (Android 4.0+), handles battery optimization <br>restrictions automatically, supports chaining tasks, and is the official Android recommendation for <br>background work.<br><br>   AlarmManager"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "AlarmManager",
+                        "questions": [
+                            {
+                                "q": "What is AlarmManager?",
+                                "a": "AlarmManager is a system service that lets you schedule your app to run at a specific time in the <br>future. It can wake up the device to run your code. Think of it as setting an alarm clock for your app <br>– 'run this code at 7 AM every day'."
+                            },
+                            {
+                                "q": "Why do we use AlarmManager?",
+                                "a": "AlarmManager is used to schedule tasks at specific times or intervals, even when the app isn't <br>running. Examples: daily reminder notifications, scheduled data sync at midnight, periodic cleanup <br>tasks, countdown timers that work even when device is restarted."
+                            },
+                            {
+                                "q": "What is RTC_WAKEUP?",
+                                "a": "RTC_WAKEUP is an AlarmManager alarm type. RTC = Real Time Clock (wall clock time like <br>3:00 PM). WAKEUP = wakes up the device if it's sleeping. So RTC_WAKEUP alarm fires at a <br>specific wall clock time AND wakes the device. Other types: ELAPSED_REALTIME_WAKEUP <br>(since boot time)."
+                            },
+                            {
+                                "q": "How does AlarmManager work?",
+                                "a": "You get AlarmManager system service, create a PendingIntent (what to do when alarm fires), <br>and call alarm.set() with alarm type, trigger time, and PendingIntent. At the specified time, Android <br>fires the alarm and executes the PendingIntent (usually triggering a BroadcastReceiver)."
+                            },
+                            {
+                                "q": "What is PendingIntent?",
+                                "a": "PendingIntent is an Intent that is given to another application/system to fire on your behalf at a <br>later time. AlarmManager holds a PendingIntent and fires it when the alarm triggers. It's like writing <br>a letter and giving it to someone else to mail later."
+                            },
+                            {
+                                "q": "Why is PendingIntent required?",
+                                "a": "PendingIntent is required because when the alarm fires, your app may not be running. The <br>system needs a pre-packaged intent to execute. PendingIntent contains the intent AND the <br>permission to execute it as if your app were running. Without it, alarm couldn't trigger anything."
+                            },
+                            {
+                                "q": "Can AlarmManager work when app is closed?",
+                                "a": "Yes! AlarmManager alarms survive app closure. When the alarm fires, Android can start your <br>BroadcastReceiver even if the app isn't running. However, alarms are cleared when the device <br>restarts unless you re-schedule them in a BOOT_COMPLETED receiver.<br><br>Practical Questions"
+                            },
+                            {
+                                "q": "How do you set an alarm in Android?",
+                                "a": "AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE); Intent intent = new <br>Intent(this, MyAlarmReceiver.class); PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent, <br>0); long triggerTime = System.currentTimeMillis() + 60000; // 1 min from now <br>am.set(AlarmManager.RTC_WAKEUP, triggerTime, pi);"
+                            },
+                            {
+                                "q": "What happens when alarm triggers?",
+                                "a": "When the alarm time is reached, AlarmManager fires the PendingIntent. If it's a getBroadcast <br>PendingIntent, Android starts the BroadcastReceiver's onReceive() method. The receiver can then <br>show a notification, start a Service, or perform any quick action."
+                            },
+                            {
+                                "q": "How is Broadcast Receiver used with AlarmManager?",
+                                "a": "BroadcastReceiver is typically used as the target of AlarmManager. When alarm fires, it triggers <br>the Receiver's onReceive(). Inside onReceive(), you perform the task (show notification, start <br>service). This combination allows scheduling background tasks at specific times."
+                            },
+                            {
+                                "q": "What is the role of system clock in AlarmManager?",
+                                "a": "AlarmManager uses the system clock to know when to fire alarms. RTC alarms use the wall <br>clock (real time). ELAPSED_REALTIME alarms use time since device boot. If user changes system <br>time, RTC alarms may fire at wrong times. System clock is the reference point for all scheduling.<br><br>   Android Storage<br>Basics"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Android Storage (Basics)",
+                        "questions": [
+                            {
+                                "q": "What is Android Storage System?",
+                                "a": "Android Storage System is how apps save data on the device. Android provides multiple storage <br>options: Internal Storage (app-private files), External Storage (shared files), SharedPreferences <br>(key-value pairs), SQLite Database (structured data), and cloud storage. Each has different use <br>cases and access rules."
+                            },
+                            {
+                                "q": "Why do we need storage in apps?",
+                                "a": "Apps need storage to: remember user preferences (login status, settings), save user data <br>(messages, photos, documents), cache data to reduce network calls, store app data that persists <br>between sessions. Without storage, all data is lost when app closes."
+                            },
+                            {
+                                "q": "What are types of storage in Android?",
+                                "a": "Types: 1) Internal Storage – private to app, deleted on uninstall. 2) External Storage – shared <br>space (SD card / shared memory), needs permission. 3) Shared Preferences – simple key-value <br>storage. 4) SQLite Database – structured relational data. 5) Network Storage – cloud/server.<br><br>Internal Storage"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Internal Storage",
+                        "questions": [
+                            {
+                                "q": "What is internal storage?",
+                                "a": "Internal Storage is private storage space allocated for each app. Only that app can access its <br>internal storage – other apps cannot read it (unless rooted). Files are stored in <br>/data/data/your.package.name/. It's always available and doesn't need permissions."
+                            },
+                            {
+                                "q": "Is internal storage private or public?",
+                                "a": "Internal storage is completely private to your app. Other apps cannot access your internal <br>storage files. Even users can't browse these files without root access. This makes it the most <br>secure storage option for sensitive data like user credentials or private user data."
+                            },
+                            {
+                                "q": "What happens to data after uninstall?",
+                                "a": "When an app is uninstalled, ALL internal storage data is automatically deleted. The user can also <br>choose to clear app data in Settings > Apps > Your App > Clear Data, which also deletes all internal <br>storage. External storage files created by the app may survive uninstall."
+                            },
+                            {
+                                "q": "What is getFilesDir()?",
+                                "a": "getFilesDir() returns a File object pointing to the directory for permanent files in internal storage. <br>Files here persist until the app is uninstalled or user clears data. Use this for files the app needs to <br>keep long-term, like user documents or app configuration files."
+                            },
+                            {
+                                "q": "What is getCacheDir()?",
+                                "a": "getCacheDir() returns a File object pointing to a cache directory in internal storage. Files here <br>are temporary – Android may delete them when storage is low. Use for temporary files (downloaded <br>images, cached responses) that can be recreated if deleted."
+                            },
+                            {
+                                "q": "When should we use internal storage?",
+                                "a": "Use internal storage for: sensitive data (passwords, tokens), app configuration, data that should <br>not be accessible to other apps or users, files that should be deleted with the app. Default choice <br>for most app data storage.<br><br>External Storage"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "External Storage",
+                        "questions": [
+                            {
+                                "q": "What is external storage?",
+                                "a": "External Storage is shared storage accessible by multiple apps and the user. Originally it was SD <br>card, now it's also shared internal memory. Files here are accessible from a computer when <br>connected via USB. Examples: Photos in DCIM, Downloads folder, Documents."
+                            },
+                            {
+                                "q": "Is external storage secure?",
+                                "a": "No – external storage is NOT secure. Other apps can read your files (with permission). Users <br>can browse and modify files using a file manager. Never store sensitive data (passwords, private <br>user data) on external storage. Only use for user-facing files they expect to access."
+                            },
+                            {
+                                "q": "What permission is required?",
+                                "a": "READ_EXTERNAL_STORAGE – to read files from external storage. <br>WRITE_EXTERNAL_STORAGE – to write/create files on external storage. Both must be declared <br>in AndroidManifest.xml AND requested at runtime (Android 6.0+). Android 10+ changed this with <br>scoped storage."
+                            },
+                            {
+                                "q": "When should we use external storage?",
+                                "a": "Use external storage for user-generated content that users expect to access outside the app: <br>photos taken with your app's camera, downloaded music/video for offline viewing, exported <br>documents/reports, files users want to share with other apps or access on a computer."
+                            },
+                            {
+                                "q": "Can other apps access external storage?",
+                                "a": "With proper permissions, yes. Before Android 10, any app with READ_EXTERNAL_STORAGE <br>could read all external files. Android 10+ introduced Scoped Storage, restricting apps to their own <br>app-specific directories and media collections, requiring MediaStore API for broad access.<br><br>Shared Preferences"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Shared Preferences",
+                        "questions": [
+                            {
+                                "q": "What is Shared Preferences?",
+                                "a": "SharedPreferences is a simple key-value storage mechanism for primitive data (String, int, <br>boolean, float, long). Data is stored in an XML file in internal storage. It's the simplest storage option <br>– easy to use, no setup needed. Think of it as a permanent Map."
+                            },
+                            {
+                                "q": "How is data stored in Shared Preferences?",
+                                "a": "Data is stored as key-value pairs in an XML file. You write: SharedPreferences prefs = <br>getSharedPreferences('MyPrefs', MODE_PRIVATE); SharedPreferences.Editor editor = prefs.edit(); <br>editor.putString('username', 'John'); editor.apply(); To read: String name = <br>prefs.getString('username', 'default');"
+                            },
+                            {
+                                "q": "What type of data is suitable?",
+                                "a": "SharedPreferences is suitable for: user settings (theme, language, notifications on/off), login <br>status (isLoggedIn boolean), user ID/token for API, last opened screen, simple counters, first launch flags. NOT suitable for large data, complex objects, or lists."
+                            },
+                            {
+                                "q": "What is key-value pair?",
+                                "a": "Key-value pair means data is stored as a pair: a key (unique name/identifier) and its value. Like a <br>dictionary. Key is always a String. Example: key='isDarkMode', value=true. You retrieve data using <br>the key: prefs.getBoolean('isDarkMode', false)."
+                            },
+                            {
+                                "q": "Limitations of Shared Preferences?",
+                                "a": "Limitations: Only stores primitive types (String, int, boolean, float, long, Set<String>). Cannot <br>store complex objects, lists, or large data. Not suitable for relational data. Slower than in-memory <br>operations. Not encrypted by default (use EncryptedSharedPreferences for sensitive data).<br><br>Database (SQLite)"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Database (SQLite)",
+                        "questions": [
+                            {
+                                "q": "What is SQLite database?",
+                                "a": "SQLite is a lightweight, serverless relational database built into Android. It stores data in tables <br>with rows and columns, like a mini version of MySQL. You query it using SQL. Room is the modern <br>library that wraps SQLite with an easier API. The database file is stored in internal storage."
+                            },
+                            {
+                                "q": "When should we use database?",
+                                "a": "Use database when you have: large amounts of data, complex data relationships (users have <br>orders, orders have items), need to search/filter data efficiently, need to sort data, structured data <br>with multiple fields. Examples: contacts app, note-taking app, shopping app with cart."
+                            },
+                            {
+                                "q": "What type of data is stored in database?",
+                                "a": "Databases store structured, relational data: user profiles (name, email, age, address), products <br>(ID, name, price, category), transactions (date, amount, type), messages (sender, receiver, text, <br>timestamp). Any data that has multiple attributes and needs querying."
+                            },
+                            {
+                                "q": "Advantages of database over Shared Preferences?",
+                                "a": "Database advantages: stores complex data structures, supports queries and filtering (find all <br>orders > ₹500), sorts data efficiently, handles large amounts of data, supports relationships <br>between data (user → orders), concurrent access safe. SharedPreferences only for simple key value pairs.<br><br>   File Handling (Internal Storage Code Based)"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "File Handling",
+                        "questions": [
+                            {
+                                "q": "What is openFileOutput()?",
+                                "a": "openFileOutput(filename, mode) is a Context method that opens a file for writing in internal <br>storage. It returns a FileOutputStream. Example: FileOutputStream fos = openFileOutput('myfile.txt', <br>MODE_PRIVATE); – creates/opens myfile.txt for writing."
+                            },
+                            {
+                                "q": "What is openFileInput()?",
+                                "a": "openFileInput(filename) is a Context method that opens a file for reading from internal storage. It <br>returns a FileInputStream. Example: FileInputStream fis = openFileInput('myfile.txt'); – opens <br>myfile.txt for reading. File must exist or FileNotFoundException is thrown."
+                            },
+                            {
+                                "q": "What is FileOutputStream?",
+                                "a": "FileOutputStream is a Java class for writing bytes to a file. To write text: <br>fos.write('Hello'.getBytes()); To write a string more easily: OutputStreamWriter writer = new <br>OutputStreamWriter(fos); writer.write('Hello'); Always close the stream in a finally block or use try with-resources."
+                            },
+                            {
+                                "q": "What is FileInputStream?",
+                                "a": "FileInputStream is a Java class for reading bytes from a file. To read text: InputStreamReader <br>reader = new InputStreamReader(fis); BufferedReader br = new BufferedReader(reader); String <br>line = br.readLine(); Always close when done reading to release the file handle."
+                            },
+                            {
+                                "q": "What is MODE_PRIVATE?",
+                                "a": "MODE_PRIVATE is a file creation mode for openFileOutput(). It makes the file accessible only <br>by your app (private). If the file already exists, it is overwritten. This is the most commonly used and <br>recommended mode for security. Other modes: MODE_APPEND, MODE_WORLD_READABLE <br>(deprecated)."
+                            },
+                            {
+                                "q": "What is MODE_APPEND?",
+                                "a": "MODE_APPEND is a file creation mode for openFileOutput(). Instead of overwriting existing file <br>content, new data is added to the end of the file. Example: openFileOutput('log.txt', <br>MODE_APPEND); – each write adds to the log instead of erasing previous entries.<br><br>   Advanced / Viva-Tricky Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Advanced / Tricky Questions",
+                        "questions": [
+                            {
+                                "q": "Which storage is safest?",
+                                "a": "Internal Storage is the safest – it's private to your app, not accessible by other apps or users <br>without root, and deleted on uninstall. For extra security (passwords, tokens), use <br>EncryptedSharedPreferences or Android Keystore for encryption. Never store sensitive data on <br>external storage."
+                            },
+                            {
+                                "q": "Which storage persists after uninstall?",
+                                "a": "External storage files may persist after uninstall (unless the app created them in its app-specific<br>directory on external storage). SharedPreferences, Internal Storage, and SQLite databases are all <br>deleted on uninstall. Cloud storage persists regardless of app install status."
+                            },
+                            {
+                                "q": "Can internal storage be accessed by other apps?",
+                                "a": "No – internal storage cannot be accessed by other apps under normal circumstances. Each app <br>runs in its own Linux user space and internal storage files have permissions set to owner-only. Only <br>root access or using ContentProvider (intentionally sharing data) allows other apps to access your <br>internal files."
+                            },
+                            {
+                                "q": "What happens if storage permission is denied?",
+                                "a": "If the user denies WRITE_EXTERNAL_STORAGE permission, any attempt to write to external <br>storage will fail with a SecurityException. Your app must handle this gracefully – catch the <br>exception, explain to the user why the permission is needed, and offer to work without that feature."
+                            },
+                            {
+                                "q": "Difference between cache and file storage?",
+                                "a": "Cache storage (getCacheDir()): temporary files, Android may delete when storage is low, use for <br>files you can recreate (downloaded images). File storage (getFilesDir()): permanent files, only <br>deleted on uninstall or user clearing data, use for important files you need long-term."
+                            },
+                            {
+                                "q": "Can Broadcast Receiver start a Service?",
+                                "a": "Yes! Broadcast Receiver can start a Service from onReceive(). Example: Intent serviceIntent = <br>new Intent(context, MyService.class); context.startService(serviceIntent); This is the common <br>pattern for ACTION_BOOT_COMPLETED – receiver catches boot broadcast and starts the app's <br>background service."
+                            },
+                            {
+                                "q": "Can Service start Activity?",
+                                "a": "Yes, but with restrictions in newer Android versions. You can call startActivity() from a Service, <br>but Android 10+ restricts background activity launching for user experience reasons. The <br>recommended approach is to show a Notification and let the user tap it to launch the Activity."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "unitId": "unit-4",
+                "unitTitle": "Unit 4 – iOS, Xcode & MVC",
+                "icon": "🍎",
+                "description": "iOS basics, Xcode environment, and MVC pattern.",
+                "topics": [
+                    {
+                        "topicTitle": "iOS Basics",
+                        "questions": [
+                            {
+                                "q": "What is iOS?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Who developed iOS?",
+                                "a": ""
+                            },
+                            {
+                                "q": "On which devices does iOS run?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is the difference between iOS and Android?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Why is iOS considered secure?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is iPadOS?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Features of iOS",
+                        "questions": [
+                            {
+                                "q": "What are the key features of iOS?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is multitasking in iOS?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is background audio?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are push notifications?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are local notifications?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is fast app switching?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Apple Pay?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Game Center?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Notification Center?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "UI in iOS",
+                        "questions": [
+                            {
+                                "q": "How does iOS interface work?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are multi-touch gestures?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Give examples of gestures (tap, swipe, pinch).",
+                                "a": ""
+                            },
+                            {
+                                "q": "How does iOS handle screen orientation?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is the role of accelerometer?",
+                                "a": ""
+                            },
+                            {
+                                "q": "How do users navigate back in iOS apps?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Device Features",
+                        "questions": [
+                            {
+                                "q": "What is camera integration in iOS?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is AVFoundation?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are location services?",
+                                "a": ""
+                            },
+                            {
+                                "q": "How does iOS use GPS?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is MapKit?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Bluetooth framework in iOS?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Accessibility",
+                        "questions": [
+                            {
+                                "q": "What is accessibility in iOS?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is VoiceOver?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Why is accessibility important?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Give examples of accessibility features.",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Xcode IDE",
+                        "questions": [
+                            {
+                                "q": "What is Xcode?",
+                                "a": ""
+                            },
+                            {
+                                "q": "On which OS does Xcode run?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is the purpose of Xcode?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are main components of Xcode?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Standard Editor?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Assistant Editor?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Project Navigator?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is File Inspector?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Quick Help Inspector?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Identity Inspector?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Attribute Inspector?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Size Inspector?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Connections Inspector?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Media Library?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Storyboard & UI",
+                        "questions": [
+                            {
+                                "q": "What is storyboard in iOS?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is ViewController?",
+                                "a": ""
+                            },
+                            {
+                                "q": "How do you connect UI to code?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are outlets and actions?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is drag-and-drop UI design?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "MVC Architecture",
+                        "questions": [
+                            {
+                                "q": "What is MVC?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Why is MVC used?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are components of MVC?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Model?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is View?",
+                                "a": "ViewHolder is a design pattern that caches references to child views. Instead of calling <br>findViewById() every time a list item is displayed (which is slow), ViewHolder stores the view <br>references once. This makes scrolling smooth and fast."
+                            },
+                            {
+                                "q": "What is Controller?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What does Model contain?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Does Model interact with UI?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is the role of View?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Does View contain logic?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is the role of Controller?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Why is Controller called mediator?",
+                                "a": ""
+                            },
+                            {
+                                "q": "How does data flow in MVC?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What happens if MVC is not used?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Why is MVC good for large applications?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are advantages of MVC?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Advanced MVC Concepts",
+                        "questions": [
+                            {
+                                "q": "What is data encapsulation in Model?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is persistence layer?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is network layer in MVC?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Why use a single network class?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are abstraction layers?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is constant file?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are extensions in Swift?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "View Layer (UI Handling)",
+                        "questions": [
+                            {
+                                "q": "What is UIView?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Does View store data?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Can View reuse components?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are UILabel and UITextField?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Controller Layer",
+                        "questions": [
+                            {
+                                "q": "What is ViewController?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Does Controller contain business logic?",
+                                "a": ""
+                            },
+                            {
+                                "q": "How does Controller communicate with Model?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is delegation pattern?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Conceptual / Comparison",
+                        "questions": [
+                            {
+                                "q": "Compare MVC in iOS with Android architecture.",
+                                "a": ""
+                            },
+                            {
+                                "q": "Which is more flexible: MVC or monolithic design?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What are drawbacks of MVC?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is Massive ViewController problem?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Advanced / Viva-Tricky",
+                        "questions": [
+                            {
+                                "q": "Can View directly access Model?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Why should Model be independent?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What happens if Controller becomes too large?",
+                                "a": ""
+                            },
+                            {
+                                "q": "How can MVC be improved?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Is MVC still used in modern apps?",
+                                "a": ""
+                            }
+                        ]
+                    },
+                    {
+                        "topicTitle": "Scenario-Based & Final",
+                        "questions": [
+                            {
+                                "q": "If data changes, which component updates UI?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Where should API calls be written?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Where should UI design be handled?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Where should business logic be written?",
+                                "a": ""
+                            },
+                            {
+                                "q": "If app crashes due to UI, which layer is responsible?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Why is architecture important in app development?",
+                                "a": ""
+                            },
+                            {
+                                "q": "What is separation of concerns?",
+                                "a": ""
+                            },
+                            {
+                                "q": "How does MVC improve maintainability?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Can we replace MVC with other patterns?",
+                                "a": ""
+                            },
+                            {
+                                "q": "Name alternatives of MVC (MVVM, MVP).",
+                                "a": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        const navItemsContainer = document.getElementById('nav-items');
+        const columnsWrapper = document.getElementById('columns-wrapper');
+
+        // 1. Render Sidebar Nav Items
+        qaData.forEach((unit, uIdx) => {
+            const shortTitle = unit.unitTitle.split('–')[0].trim();
+            const navDiv = document.createElement('div');
+            navDiv.className = 'nav-item';
+            navDiv.setAttribute('data-target', unit.unitId);
+            navDiv.innerHTML = `
+                <span>${unit.unitTitle}</span>
+                <span class="nav-arrow">></span>
+            `;
+            navItemsContainer.appendChild(navDiv);
+        });
+
+        // 2. Render Columns & Cards
+        qaData.forEach(unit => {
+            const shortTitle = unit.unitTitle; // use full title for column
+
+            const col = document.createElement('div');
+            col.className = 'unit-column';
+            col.id = `col-${unit.unitId}`;
+
+            let colHtml = `<h2 class="unit-column-title">${shortTitle}</h2>`;
+
+            unit.topics.forEach(topic => {
+                colHtml += `<div class="topic-label">${topic.topicTitle}</div>`;
+
+                topic.questions.forEach((q, qIdx) => {
+                    const cardId = `${unit.unitId}-${topic.topicTitle.replace(/\s+/g, '-')}-${qIdx}`;
+                    colHtml += `
+                        <div class="qa-card" id="${cardId}">
+                            <div class="qa-card-header">
+                                <div class="qa-card-header-text">Q: ${q.q}</div>
+                                <div class="chevron">▼</div>
+                            </div>
+                            <div class="qa-card-content">
+                                <div class="qa-inner">
+                                    <div class="qa-question">Q: ${q.q}</div>
+                                    <div class="qa-answer">A: ${q.a || '[Provide your answer here]'}</div>
+                                    <button class="copy-btn">Copy Answer</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            });
+
+            col.innerHTML = colHtml;
+            columnsWrapper.appendChild(col);
+        });
+
+        // 3. Setup Interactivity
+
+        // Toggles
+        document.addEventListener('click', (e) => {
+            let header = e.target.closest('.qa-card-header');
+            if (header) {
+                const card = header.parentElement;
+                card.classList.toggle('open');
+                const chevron = header.querySelector('.chevron');
+                if (card.classList.contains('open')) {
+                    chevron.textContent = '▲';
+                } else {
+                    chevron.textContent = '▼';
+                }
+            }
+        });
+
+        // Copy Buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('copy-btn')) {
+                const btn = e.target;
+                const answerDiv = btn.previousElementSibling;
+                let answerText = answerDiv.innerHTML.replace(/^A:\s*/, '').replace(/<br\s*\/?>/ig, '\n');
+                answerText = answerText.replace(/<[^>]+>/g, '');
+
+                navigator.clipboard.writeText(answerText).then(() => {
+                    const orig = btn.textContent;
+                    btn.textContent = 'Copied!';
+                    btn.style.background = '#8b5cf6';
+                    btn.style.color = '#fff';
+                    setTimeout(() => {
+                        btn.textContent = orig;
+                        btn.style.background = '';
+                        btn.style.color = '';
+                    }, 2000);
+                }).catch(err => console.error('Copy failed', err));
+            }
+        });
+
+        // Sidebar Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+                item.classList.add('active');
+
+                const targetId = item.getAttribute('data-target');
+                if (targetId === 'all') {
+                    columnsWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    const col = document.getElementById(`col-${targetId}`);
+                    if (col) {
+                        const wrapperRect = columnsWrapper.getBoundingClientRect();
+                        const colRect = col.getBoundingClientRect();
+                        const scrollLeft = colRect.left - wrapperRect.left + columnsWrapper.scrollLeft - 20;
+                        columnsWrapper.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Live Search
+        const searchBox = document.getElementById('search-box');
+        searchBox.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+
+            document.querySelectorAll('.unit-column').forEach(col => {
+                let colHasMatch = false;
+
+                col.querySelectorAll('.qa-card').forEach(card => {
+                    const qText = card.querySelector('.qa-question').textContent.toLowerCase();
+                    const aText = card.querySelector('.qa-answer').textContent.toLowerCase();
+
+                    if (qText.includes(term) || aText.includes(term)) {
+                        card.classList.remove('hidden');
+                        colHasMatch = true;
+                        if (term.length > 0 && !card.classList.contains('open')) {
+                            card.classList.add('open');
+                            card.querySelector('.chevron').textContent = '▲';
+                        }
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+
+                if (colHasMatch || term.length === 0) {
+                    col.classList.remove('hidden');
+                } else {
+                    col.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
